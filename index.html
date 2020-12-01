@@ -1,0 +1,46 @@
+<html>
+  <head>
+    <style>
+      body {
+        font-family:'Courier New', Courier, monospace;
+        background-color: cyan;
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="game"></div>
+    <script type="text/javascript" src="https://rawgithub.com/craftyjs/Crafty/release/dist/crafty-min.js"></script>
+    <script>
+      Crafty.init(1800, 1000, document.getElementById('game'));
+
+Crafty.e('Floor, 2D, Canvas, Color')
+  .attr({x: 0, y: 500, w: 1200, h: 20})
+  .color('green');
+
+  Crafty.e('Floor2, 2D, Canvas, Color')
+  .attr({x: 0, y: 1000, w: 1200, h: 20})
+  .color('blue');
+
+Crafty.e('2D, Canvas, Color, Twoway, Gravity')
+  .attr({x: 0, y: 0, w: 50, h: 50})
+  .color('#F00')
+  .twoway(200)
+  .gravity('Floor');
+
+  var square = Crafty.e('2D, Canvas, Color');
+square.attr({
+  x: 1000,
+  y: 50,
+  w: 100,
+  h: 100
+}).color('yellow');
+
+square.origin("center")
+
+square.bind('UpdateFrame', function(){
+  this.rotation = this.rotation + 1;
+});
+    </script>
+  </body>
+</html>
